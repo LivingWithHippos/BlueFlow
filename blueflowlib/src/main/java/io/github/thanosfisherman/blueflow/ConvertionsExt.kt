@@ -7,7 +7,7 @@ import kotlin.math.pow
 
 val String.toByteArrayFromHex
     inline get() = this.chunked(2).map {
-        it.toUpperCase(Locale.ENGLISH).toInt(16).toByte()
+        it.uppercase(Locale.ENGLISH).toInt(16).toByte()
     }.toByteArray()
 val ByteArray.toHexLower
     inline get() = this.joinToString(separator = "") {
@@ -38,7 +38,7 @@ fun String.incWithEndianness(step: Int = 1): String {
     var reversedHex = reversedLong.toHex
     while (reversedHex.length < this.length)
         reversedHex = "0$reversedHex"
-    return reversedHex.chunked(2).reversed().joinToString("").toUpperCase(Locale.ENGLISH)
+    return reversedHex.chunked(2).reversed().joinToString("").uppercase(Locale.ENGLISH)
 }
 
 fun String.reverseEndianness(): String {
@@ -132,7 +132,7 @@ fun Int.toHexLower(length: Int): String {
 }
 
 fun Int.toHexUpper(length: Int): String {
-    return toHexLower(length).toUpperCase(Locale.ENGLISH)
+    return toHexLower(length).uppercase(Locale.ENGLISH)
 }
 
 fun Long.toHexLower(length: Int): String {
@@ -142,5 +142,5 @@ fun Long.toHexLower(length: Int): String {
 }
 
 fun Long.toHexUpper(length: Int): String {
-    return toHexLower(length).toUpperCase(Locale.ENGLISH)
+    return toHexLower(length).uppercase(Locale.ENGLISH)
 }
